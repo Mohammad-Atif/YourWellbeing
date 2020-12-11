@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail_taker_activity">
+
+    <TextView
+        android:id="@+id/agetxtview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/age"
+        android:textColor="@android:color/background_dark"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.292" />
+
+    <Spinner
+        android:id="@+id/age_spin"
+        android:layout_width="136dp"
+        android:layout_height="51dp"
+        android:background="@drawable/boxes"
+        android:entries="@array/agelist"
+        app:layout_constraintBottom_toBottomOf="@+id/agetxtview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintStart_toEndOf="@+id/agetxtview"
+        app:layout_constraintTop_toTopOf="@+id/agetxtview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/gendertxtview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/gender"
+        android:textColor="@android:color/background_dark"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/agetxtview"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/agetxtview"
+        app:layout_constraintTop_toBottomOf="@+id/agetxtview" />
+
+    <Spinner
+        android:id="@+id/gender_spin"
+        android:layout_width="136dp"
+        android:layout_height="51dp"
+        android:background="@drawable/boxes"
+        android:entries="@array/genderslist"
+        app:layout_constraintBottom_toBottomOf="@+id/gendertxtview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toEndOf="@+id/gendertxtview"
+        app:layout_constraintTop_toTopOf="@+id/gendertxtview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/lifestyletxtview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/lifestyle"
+        android:textColor="@android:color/background_dark"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/gendertxtview"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gendertxtview"
+        app:layout_constraintTop_toBottomOf="@+id/gendertxtview"
+        app:layout_constraintVertical_bias="0.153" />
+
+    <Spinner
+        android:id="@+id/lifestyle_spin"
+        android:layout_width="136dp"
+        android:layout_height="51dp"
+        android:background="@drawable/boxes"
+        android:entries="@array/lifestylelist"
+        app:layout_constraintBottom_toBottomOf="@+id/lifestyletxtview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toEndOf="@+id/lifestyletxtview"
+        app:layout_constraintTop_toTopOf="@+id/lifestyletxtview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/continuebtn"
+        android:layout_width="111dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/rounded_corners"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/cont"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

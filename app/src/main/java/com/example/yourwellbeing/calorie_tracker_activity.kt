@@ -1,15 +1,12 @@
 package com.example.yourwellbeing
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+class calorie_tracker_activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        startActivity(Intent(this,detail_taker_activity::class.java))
+        setContentView(R.layout.activity_calorie_tracker_activity)
     }
 }
