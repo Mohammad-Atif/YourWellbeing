@@ -4,6 +4,7 @@
     <string name="gender">Gender</string>
     <string name="lifestyle">Lifestyle</string>
     <string name="cont">Continue</string>
+    <string name="txv">TextView</string>
     <string-array name="genderslist">
         <item>Select*</item>
         <item>Male</item>
