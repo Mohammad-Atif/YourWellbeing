@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Your Wellbeing</string>
     <string name="age">Age</string>
     <string name="gender">Gender</string>
@@ -12,9 +12,9 @@
     </string-array>
     <string-array name="agelist">
         <item>Select*</item>
-        <item>14–18</item>
-        <item>19–30</item>
-        <item>31–50</item>
+        <item tools:ignore="TypographyDashes">14-18</item>
+        <item tools:ignore="TypographyDashes">19-30</item>
+        <item tools:ignore="TypographyDashes">31-50</item>
         <item>51+</item>
     </string-array>
     <string-array name="lifestylelist">
