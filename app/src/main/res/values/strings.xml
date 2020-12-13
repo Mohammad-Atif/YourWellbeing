@@ -5,6 +5,14 @@
     <string name="lifestyle">Lifestyle</string>
     <string name="cont">Continue</string>
     <string name="txv">TextView</string>
+    <string name="morning_snack">Morning Snack</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="countstars">***</string>
+    <string name="hint1">1</string>
+    <string name="lunch">Lunch</string>
+    <string name="evening_snack">Evening Snack</string>
+    <string name="dinner">Dinner</string>
+    <string name="calculate">Calculate</string>
     <string-array name="genderslist">
         <item>Select*</item>
         <item>Male</item>

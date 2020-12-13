@@ -33,21 +33,21 @@ class calorie_tracker_activity : AppCompatActivity() {
 
 
         val db = Databases.getInstance(application)
-        getbtn.setOnClickListener {
-            CoroutineScope(IO).launch {
-                lateinit var a:List<Int>
-                val che = db.getchartDao()    //till here app working perfectly
-                if(user_lifestyle=="Sedentary")
-                    a=che.getCalorie_Sedentary(user_gender.toString(),user_age.toString())
-                else if(user_lifestyle=="Moderately Active")
-                    a=che.getCalorie_Moderate(user_gender.toString(),user_age.toString())
-                else
-                    a=che.getCalorie_Active(user_gender.toString(),user_age.toString())     //now on calling this my app crashes
-             withContext(Main){
-                 checktxt.text=a[0].toString()
-               }
-            }
-        }
+//        getbtn.setOnClickListener {
+//            CoroutineScope(IO).launch {
+//                lateinit var a:List<Int>
+//                val che = db.getchartDao()    //till here app working perfectly
+//                if(user_lifestyle=="Sedentary")
+//                    a=che.getCalorie_Sedentary(user_gender.toString(),user_age.toString())
+//                else if(user_lifestyle=="Moderately Active")
+//                    a=che.getCalorie_Moderate(user_gender.toString(),user_age.toString())
+//                else
+//                    a=che.getCalorie_Active(user_gender.toString(),user_age.toString())     //now on calling this my app crashes
+//             withContext(Main){
+//                 checktxt.text=a[0].toString()
+//               }
+//            }
+//        }
 
 
 

@@ -6,27 +6,670 @@
     android:layout_height="match_parent"
     tools:context=".calorie_tracker_activity">
 
-    <TextView
-        android:id="@+id/checktxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txv"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
-    <Button
-        android:id="@+id/getbtn"
-        android:layout_width="106dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="136dp"
-        android:text="get"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/morningtxtview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/morning_snack"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/morningsp1"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintEnd_toStartOf="@+id/morningsp2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/morningtxtview" />
+
+            <Spinner
+                android:id="@+id/morningsp2"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/morningsp1"
+                app:layout_constraintEnd_toStartOf="@+id/morningsp3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/morningsp1"
+                app:layout_constraintTop_toTopOf="@id/morningsp1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Spinner
+                android:id="@+id/morningsp3"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/morningsp2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/morningsp2"
+                app:layout_constraintTop_toTopOf="@+id/morningsp2" />
+
+            <TextView
+                android:id="@+id/breakfasttxtview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/breakfast"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/morningsp1count_txt" />
+
+            <Spinner
+                android:id="@+id/breakfastsp1"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintEnd_toStartOf="@+id/breakfastsp2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/breakfasttxtview" />
+
+            <Spinner
+                android:id="@+id/breakfastsp2"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/breakfastsp1"
+                app:layout_constraintEnd_toStartOf="@+id/breakfastsp3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/breakfastsp1"
+                app:layout_constraintTop_toTopOf="@id/breakfastsp1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Spinner
+                android:id="@+id/breakfastsp3"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/breakfastsp2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/breakfastsp2"
+                app:layout_constraintTop_toTopOf="@+id/breakfastsp2" />
+
+            <EditText
+                android:id="@+id/morningsp1count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/morningsp1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/morningsp1"
+                app:layout_constraintTop_toBottomOf="@+id/morningsp1" />
+
+            <TextView
+                android:id="@+id/morning_intake_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/morningsp1count_txt"
+                app:layout_constraintStart_toEndOf="@+id/morningsp1count_txt"
+                app:layout_constraintTop_toTopOf="@+id/morningsp1count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/morningsp2count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/morningsp2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/morningsp2"
+                app:layout_constraintTop_toBottomOf="@+id/morningsp2" />
+
+            <TextView
+                android:id="@+id/morning_intake_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/morningsp2count_txt"
+                app:layout_constraintStart_toEndOf="@+id/morningsp2count_txt"
+                app:layout_constraintTop_toTopOf="@+id/morningsp2count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/morningsp3count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/morningsp3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/morningsp3"
+                app:layout_constraintTop_toBottomOf="@+id/morningsp3" />
+
+            <TextView
+                android:id="@+id/morning_intake_view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/morningsp3count_txt"
+                app:layout_constraintStart_toEndOf="@+id/morningsp3count_txt"
+                app:layout_constraintTop_toTopOf="@+id/morningsp3count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+            <EditText
+                android:id="@+id/breakfastsp1count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/breakfastsp1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/breakfastsp1"
+                app:layout_constraintTop_toBottomOf="@+id/breakfastsp1" />
+            <TextView
+                android:id="@+id/breakfast_intake_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/breakfastsp1count_txt"
+                app:layout_constraintStart_toEndOf="@+id/breakfastsp1count_txt"
+                app:layout_constraintTop_toTopOf="@+id/breakfastsp1count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/breakfastsp2count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/breakfastsp2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/breakfastsp2"
+                app:layout_constraintTop_toBottomOf="@+id/breakfastsp2" />
+            <TextView
+                android:id="@+id/breakfast_intake_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/breakfastsp2count_txt"
+                app:layout_constraintStart_toEndOf="@+id/breakfastsp2count_txt"
+                app:layout_constraintTop_toTopOf="@+id/breakfastsp2count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+            <EditText
+                android:id="@+id/breakfastsp3count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/breakfastsp3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/breakfastsp3"
+                app:layout_constraintTop_toBottomOf="@+id/breakfastsp3" />
+
+            <TextView
+                android:id="@+id/breakfast_intake_view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/breakfastsp3count_txt"
+                app:layout_constraintStart_toEndOf="@+id/breakfastsp3count_txt"
+                app:layout_constraintTop_toTopOf="@+id/breakfastsp3count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/lunchtxtview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/lunch"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/breakfastsp1count_txt" />
+
+            <Spinner
+                android:id="@+id/lunchsp1"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintEnd_toStartOf="@+id/lunchsp2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lunchtxtview" />
+
+            <Spinner
+                android:id="@+id/lunchsp2"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/lunchsp1"
+                app:layout_constraintEnd_toStartOf="@+id/lunchsp3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lunchsp1"
+                app:layout_constraintTop_toTopOf="@id/lunchsp1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Spinner
+                android:id="@+id/lunchsp3"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/lunchsp2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lunchsp2"
+                app:layout_constraintTop_toTopOf="@+id/lunchsp2" />
+
+            <EditText
+                android:id="@+id/lunchsp1count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/lunchsp1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/lunchsp1"
+                app:layout_constraintTop_toBottomOf="@+id/lunchsp1" />
+            <TextView
+                android:id="@+id/lunch_intake_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/lunchsp1count_txt"
+                app:layout_constraintStart_toEndOf="@+id/lunchsp1count_txt"
+                app:layout_constraintTop_toTopOf="@+id/lunchsp1count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/lunchsp2count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/lunchsp2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/lunchsp2"
+                app:layout_constraintTop_toBottomOf="@+id/lunchsp2" />
+            <TextView
+                android:id="@+id/lunch_intake_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/lunchsp2count_txt"
+                app:layout_constraintStart_toEndOf="@+id/lunchsp2count_txt"
+                app:layout_constraintTop_toTopOf="@+id/lunchsp2count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+            <EditText
+                android:id="@+id/lunchsp3count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/lunchsp3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/lunchsp3"
+                app:layout_constraintTop_toBottomOf="@+id/lunchsp3" />
+
+            <TextView
+                android:id="@+id/lunch_intake_view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/lunchsp3count_txt"
+                app:layout_constraintStart_toEndOf="@+id/lunchsp3count_txt"
+                app:layout_constraintTop_toTopOf="@+id/lunchsp3count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/eveningtxtview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/evening_snack"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lunchsp1count_txt"/>
+
+            <Spinner
+                android:id="@+id/eveningsp1"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintEnd_toStartOf="@+id/eveningsp2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eveningtxtview" />
+
+            <Spinner
+                android:id="@+id/eveningsp2"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/eveningsp1"
+                app:layout_constraintEnd_toStartOf="@+id/eveningsp3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/eveningsp1"
+                app:layout_constraintTop_toTopOf="@id/eveningsp1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Spinner
+                android:id="@+id/eveningsp3"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/eveningsp2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/eveningsp2"
+                app:layout_constraintTop_toTopOf="@+id/eveningsp2" />
+            <EditText
+                android:id="@+id/eveningsp1count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/eveningsp1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/eveningsp1"
+                app:layout_constraintTop_toBottomOf="@+id/eveningsp1" />
+            <TextView
+                android:id="@+id/evening_intake_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/eveningsp1count_txt"
+                app:layout_constraintStart_toEndOf="@+id/eveningsp1count_txt"
+                app:layout_constraintTop_toTopOf="@+id/eveningsp1count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/eveningsp2count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/eveningsp2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/eveningsp2"
+                app:layout_constraintTop_toBottomOf="@+id/eveningsp2" />
+            <TextView
+                android:id="@+id/evening_intake_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/eveningsp2count_txt"
+                app:layout_constraintStart_toEndOf="@+id/eveningsp2count_txt"
+                app:layout_constraintTop_toTopOf="@id/eveningsp2count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/eveningsp3count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/eveningsp3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/eveningsp3"
+                app:layout_constraintTop_toBottomOf="@+id/eveningsp3" />
+
+            <TextView
+                android:id="@+id/evening_intake_view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/eveningsp3count_txt"
+                app:layout_constraintStart_toEndOf="@+id/eveningsp3count_txt"
+                app:layout_constraintTop_toTopOf="@+id/eveningsp3count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/dinnertxtview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/dinner"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eveningsp1count_txt"/>
+
+            <Spinner
+                android:id="@+id/dinnersp1"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintEnd_toStartOf="@+id/dinnersp2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dinnertxtview" />
+
+            <Spinner
+                android:id="@+id/dinnersp2"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/dinnersp1"
+                app:layout_constraintEnd_toStartOf="@+id/dinnersp3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/dinnersp1"
+                app:layout_constraintTop_toTopOf="@id/dinnersp1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Spinner
+                android:id="@+id/dinnersp3"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boxes"
+                app:layout_constraintBottom_toBottomOf="@+id/dinnersp2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/dinnersp2"
+                app:layout_constraintTop_toTopOf="@+id/dinnersp2" />
+
+            <EditText
+                android:id="@+id/dinnersp1count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/dinnersp1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/dinnersp1"
+                app:layout_constraintTop_toBottomOf="@+id/dinnersp1" />
+            <TextView
+                android:id="@+id/dinner_intake_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/dinnersp1count_txt"
+                app:layout_constraintStart_toEndOf="@+id/dinnersp1count_txt"
+                app:layout_constraintTop_toTopOf="@+id/dinnersp1count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/dinnersp2count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/dinnersp2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/dinnersp2"
+                app:layout_constraintTop_toBottomOf="@+id/dinnersp2" />
+            <TextView
+                android:id="@+id/dinner_intake_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/dinnersp2count_txt"
+                app:layout_constraintStart_toEndOf="@+id/dinnersp2count_txt"
+                app:layout_constraintTop_toTopOf="@id/dinnersp2count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <EditText
+                android:id="@+id/dinnersp3count_txt"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/hint1"
+                android:inputType="number"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/dinnersp3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/dinnersp3"
+                app:layout_constraintTop_toBottomOf="@+id/dinnersp3" />
+
+            <TextView
+                android:id="@+id/dinner_intake_view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/countstars"
+                app:layout_constraintBottom_toBottomOf="@+id/dinnersp3count_txt"
+                app:layout_constraintStart_toEndOf="@+id/dinnersp3count_txt"
+                app:layout_constraintTop_toTopOf="@+id/dinnersp3count_txt"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <Button
+                android:id="@+id/calculatebtn"
+                android:layout_width="111dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/calculate"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/background_light"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dinner_intake_view2"
+                app:layout_constraintVertical_bias="1.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
