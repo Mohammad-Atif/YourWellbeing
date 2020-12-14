@@ -23,11 +23,11 @@ class SpinnerActivity(val chnger:Changeview):Activity(),AdapterView .OnItemSelec
 //                Log.d("taging hun","morningsp2 called")
 //            }
 //        }
-        chnger.onItemClick(parent,foodname)
+        chnger.onItemClick(parent,foodname,pos)
 
     }
     interface Changeview {
-        fun onItemClick(parent: AdapterView<*>?,foodname:String)
+        fun onItemClick(parent: AdapterView<*>?,foodname:String,pos:Int)
     }
 
 

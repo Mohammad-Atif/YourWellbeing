@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -11,6 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Database
 import androidx.room.Room
+
+import com.example.yourwellbeing.Calculations.calculate_total_cal
+
 import com.example.yourwellbeing.KEYS.EXTRA_AGE
 import com.example.yourwellbeing.KEYS.EXTRA_GENDER
 import com.example.yourwellbeing.KEYS.EXTRA_LIFE
@@ -30,7 +34,10 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
     lateinit var user_gender:String
     lateinit var user_age:String
     lateinit var user_lifestyle:String
+    var maxcal:Int=0
+    var consumed_cal:Int=0
 
+    var allfoods:MutableList<String> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calorie_tracker_activity)
@@ -39,21 +46,29 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
         user_lifestyle= intent.getStringExtra(EXTRA_LIFE).toString()
 
 
+        resetlist()
+
+        val fooddb=FoodDatabase.getInstance(application)
         val db = Databases.getInstance(application)
-        val newdb=FoodDatabase.getInstance(application)
+        val che = fooddb.getFoodDao()
+        val char_dao=db.getchartDao()
 
         CoroutineScope(IO).launch {
             lateinit var a:List<String>
-            val che = newdb.getFoodDao()    //till here app working perfectly
+            lateinit var maxcallist:List<Int>
+
+                //till here app working perfectly
             a=che.getFoodList()
+
             val l:MutableList<String> = mutableListOf("Select")
             l.addAll(a)
-//                if(user_lifestyle=="Sedentary")
-//                    a=che.getCalorie_Sedentary(user_gender.toString(),user_age.toString())
-//                else if(user_lifestyle=="Moderately Active")
-//                    a=che.getCalorie_Moderate(user_gender.toString(),user_age.toString())
-//                else
-//                    a=che.getCalorie_Active(user_gender.toString(),user_age.toString())     //now on calling this my app crashes
+                if(user_lifestyle=="Sedentary")
+                    maxcallist=char_dao.getCalorie_Sedentary(user_gender.toString(),user_age.toString())
+                else if(user_lifestyle=="Moderately Active")
+                    maxcallist=char_dao.getCalorie_Moderate(user_gender.toString(),user_age.toString())
+                else
+                    maxcallist=char_dao.getCalorie_Active(user_gender.toString(),user_age.toString())
+            maxcal=maxcallist[0]
             withContext(Main){
                 val adap=ArrayAdapter<String>(this@calorie_tracker_activity,R.layout.support_simple_spinner_dropdown_item,l)
                 morningsp1.adapter=adap
@@ -72,6 +87,37 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
                 dinnersp2.adapter=adap
                 dinnersp3.adapter=adap
 
+            }
+        }
+
+        calculatebtn.setOnClickListener {
+
+            CoroutineScope(IO).launch {
+                //val cal_perfood_list= calculate_cal_perfood(allfoods.toList())
+                val f= allfoods.toList()
+
+
+                var callist:MutableList<Int> = mutableListOf()
+
+                for( i in f)
+                {
+                    if(i!="Select") {
+                        Log.d("here","before")
+                        val l = che.getfoodCalorie(i)
+                        callist.add(l.get(0))
+                        Log.d("here","after")
+                    }
+                    else
+                        callist.add(0)
+
+                }
+                val cal_perfood_list=callist.toList()
+
+                consumed_cal= calculate_total_cal(cal_perfood_list,
+                    listOf(morningsp1count_txt.text.toString().toInt(),morningsp2count_txt.text.toString().toInt(),morningsp3count_txt.text.toString().toInt(),breakfastsp1count_txt.text.toString().toInt(),breakfastsp2count_txt.text.toString().toInt(),breakfastsp3count_txt.text.toString().toInt(),lunchsp1count_txt.text.toString().toInt(),lunchsp2count_txt.text.toString().toInt(),lunchsp3count_txt.text.toString().toInt(),eveningsp1count_txt.text.toString().toInt(),eveningsp2count_txt.text.toString().toInt(),eveningsp3count_txt.text.toString().toInt(),dinnersp1count_txt.text.toString().toInt(),dinnersp2count_txt.text.toString().toInt(),dinnersp3count_txt.text.toString().toInt()))
+                withContext(Main){
+                    Toast.makeText(this@calorie_tracker_activity,"total: $maxcal consumed: $consumed_cal",Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -95,40 +141,85 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
 
     }
 
-    override fun onItemClick(parent: AdapterView<*>?,foodname: String) {
+    override fun onItemClick(parent: AdapterView<*>?,foodname: String,pos: Int) {
         lateinit var thelist:List<Int>
         if(foodname!="Select") {
             CoroutineScope(IO).launch {
                 thelist = getfoodtype(foodname)
                 withContext(Main) {
                     if (thelist[0] == 1)
-                        settypeview(parent,"Katori")
+                        settypeview(parent,"Katori",pos)
                     else
-                        settypeview(parent,"Piece")
+                        settypeview(parent,"Piece",pos)
                 }
             }
         }
     }
 
-    fun settypeview(parent: AdapterView<*>?,s:String)
+    fun settypeview(parent: AdapterView<*>?,s:String,pos:Int)
     {
         when(parent?.id)
         {
-            R.id.morningsp1-> morning_intake_view1.text=s
-            R.id.morningsp2->morning_intake_view2.text=s
-            R.id.morningsp3->morning_intake_view3.text=s
-            R.id.breakfastsp1->breakfast_intake_view1.text=s
-            R.id.breakfastsp2->breakfast_intake_view2.text=s
-            R.id.breakfastsp3->breakfast_intake_view3.text=s
-            R.id.lunchsp1->lunch_intake_view1.text=s
-            R.id.lunchsp2->lunch_intake_view2.text=s
-            R.id.lunchsp3->lunch_intake_view3.text=s
-            R.id.eveningsp1->evening_intake_view1.text=s
-            R.id.eveningsp2->evening_intake_view2.text=s
-            R.id.eveningsp3->evening_intake_view3.text=s
-            R.id.dinnersp1->dinner_intake_view1.text=s
-            R.id.dinnersp2->dinner_intake_view2.text=s
-            R.id.dinnersp3->dinner_intake_view3.text=s
+            R.id.morningsp1-> {
+                morning_intake_view1.text=s
+                allfoods[0]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.morningsp2-> {
+                morning_intake_view2.text =s
+                allfoods[1]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.morningsp3->{
+                morning_intake_view3.text=s
+                allfoods[2]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.breakfastsp1->{
+                breakfast_intake_view1.text=s
+                allfoods[3]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.breakfastsp2->{
+                breakfast_intake_view2.text=s
+                allfoods[4]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.breakfastsp3->{
+                breakfast_intake_view3.text=s
+                allfoods[5]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.lunchsp1->{
+                lunch_intake_view1.text=s
+                allfoods[6]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.lunchsp2->{
+                lunch_intake_view2.text=s
+                allfoods[7]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.lunchsp3->{
+                lunch_intake_view3.text=s
+                allfoods[8]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.eveningsp1->{
+                evening_intake_view1.text=s
+                allfoods[9]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.eveningsp2->{
+                evening_intake_view2.text=s
+                allfoods[10]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.eveningsp3->{
+                evening_intake_view3.text=s
+                allfoods[11]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.dinnersp1->{
+                dinner_intake_view1.text=s
+                allfoods[12]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.dinnersp2->{
+                dinner_intake_view2.text=s
+                allfoods[13]=parent.getItemAtPosition(pos).toString()
+            }
+            R.id.dinnersp3->{
+                dinner_intake_view3.text=s
+                allfoods[14]=parent.getItemAtPosition(pos).toString()
+            }
         }
     }
 
@@ -139,6 +230,36 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
         val l=che.KatoriOrPiece(foodname)
         return l
     }
+//    suspend fun calculate_cal_perfood(foods:List<String>):List<Int>
+//    {
+//        val che = fooddb.getFoodDao()
+////    lateinit var l:List<Int>
+//        var callist:MutableList<Int> = mutableListOf()
+//        for( i in foods)
+//        {
+//            if(i!="Select") {
+//                val l = che.getfoodCalorie(i)
+//                callist.add(l[0])
+//            }
+//            else
+//                callist.add(0)
+//
+//        }
+//        return callist.toList()
+//    }
+fun resetlist()
+{
+    if(allfoods.isEmpty())
+    {
+        for(i in 0..14)
+            allfoods.add("Select")
+    }
+    else
+    {
+        for(i in 0..14)
+            allfoods[i]="Select"
+    }
+}
 
 
 
