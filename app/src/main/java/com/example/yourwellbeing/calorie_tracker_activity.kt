@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Database
 import androidx.room.Room
+import com.example.yourwellbeing.Calculations.calculate_cal_perfood
 
 import com.example.yourwellbeing.Calculations.calculate_total_cal
 
@@ -93,26 +94,8 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
         calculatebtn.setOnClickListener {
 
             CoroutineScope(IO).launch {
-                //val cal_perfood_list= calculate_cal_perfood(allfoods.toList())
                 val f= allfoods.toList()
-
-
-                var callist:MutableList<Int> = mutableListOf()
-
-                for( i in f)
-                {
-                    if(i!="Select") {
-                        Log.d("here","before")
-                        val l = che.getfoodCalorie(i)
-                        callist.add(l.get(0))
-                        Log.d("here","after")
-                    }
-                    else
-                        callist.add(0)
-
-                }
-                val cal_perfood_list=callist.toList()
-
+                val cal_perfood_list= calculate_cal_perfood(f,che)
                 consumed_cal= calculate_total_cal(cal_perfood_list,
                     listOf(morningsp1count_txt.text.toString().toInt(),morningsp2count_txt.text.toString().toInt(),morningsp3count_txt.text.toString().toInt(),breakfastsp1count_txt.text.toString().toInt(),breakfastsp2count_txt.text.toString().toInt(),breakfastsp3count_txt.text.toString().toInt(),lunchsp1count_txt.text.toString().toInt(),lunchsp2count_txt.text.toString().toInt(),lunchsp3count_txt.text.toString().toInt(),eveningsp1count_txt.text.toString().toInt(),eveningsp2count_txt.text.toString().toInt(),eveningsp3count_txt.text.toString().toInt(),dinnersp1count_txt.text.toString().toInt(),dinnersp2count_txt.text.toString().toInt(),dinnersp3count_txt.text.toString().toInt()))
                 withContext(Main){
