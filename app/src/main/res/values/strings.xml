@@ -14,6 +14,7 @@
     <string name="dinner">Dinner</string>
     <string name="calculate">Calculate</string>
     <string name="_1">1</string>
+    <string name="todo">TODO</string>
     <string-array name="genderslist">
         <item>Select*</item>
         <item>Male</item>

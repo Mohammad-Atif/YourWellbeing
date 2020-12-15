@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".detail_taker_activity">
 
+    <ImageView
+        android:id="@+id/backvector"
+        android:layout_width="291dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toTopOf="@+id/continuebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32999998"
+        app:srcCompat="@drawable/cream_background"
+        android:contentDescription="@string/todo" />
+
     <TextView
         android:id="@+id/agetxtview"
         android:layout_width="wrap_content"
@@ -13,23 +25,23 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/age"
         android:textColor="@android:color/background_dark"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintVertical_bias="0.227" />
 
     <Spinner
         android:id="@+id/age_spin"
-        android:layout_width="136dp"
-        android:layout_height="51dp"
+        android:layout_width="135dp"
+        android:layout_height="37dp"
         android:background="@drawable/boxes"
         android:entries="@array/agelist"
         app:layout_constraintBottom_toBottomOf="@+id/agetxtview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toEndOf="@+id/agetxtview"
         app:layout_constraintTop_toTopOf="@+id/agetxtview"
         app:layout_constraintVertical_bias="0.0" />
@@ -38,28 +50,28 @@
         android:id="@+id/gendertxtview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/gender"
         android:textColor="@android:color/background_dark"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/agetxtview"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="@+id/agetxtview"
         app:layout_constraintTop_toBottomOf="@+id/agetxtview" />
 
     <Spinner
         android:id="@+id/gender_spin"
-        android:layout_width="136dp"
-        android:layout_height="51dp"
+        android:layout_width="135dp"
+        android:layout_height="37dp"
         android:background="@drawable/boxes"
         android:entries="@array/genderslist"
         app:layout_constraintBottom_toBottomOf="@+id/gendertxtview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toEndOf="@+id/gendertxtview"
         app:layout_constraintTop_toTopOf="@+id/gendertxtview"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/lifestyletxtview"
@@ -68,26 +80,26 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/lifestyle"
         android:textColor="@android:color/background_dark"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gendertxtview"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/gendertxtview"
         app:layout_constraintTop_toBottomOf="@+id/gendertxtview"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <Spinner
         android:id="@+id/lifestyle_spin"
-        android:layout_width="136dp"
-        android:layout_height="51dp"
+        android:layout_width="135dp"
+        android:layout_height="37dp"
         android:background="@drawable/boxes"
         android:entries="@array/lifestylelist"
         app:layout_constraintBottom_toBottomOf="@+id/lifestyletxtview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toEndOf="@+id/lifestyletxtview"
         app:layout_constraintTop_toTopOf="@+id/lifestyletxtview"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/continuebtn"
@@ -103,6 +115,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/detailicon"
+        android:layout_width="144dp"
+        android:layout_height="99dp"
+        app:layout_constraintBottom_toTopOf="@+id/continuebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backvector"
+        app:srcCompat="@drawable/for_detail_ac"
+        android:contentDescription="@string/todo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
