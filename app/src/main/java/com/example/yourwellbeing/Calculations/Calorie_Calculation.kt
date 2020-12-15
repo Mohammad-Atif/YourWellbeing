@@ -3,7 +3,21 @@ package com.example.yourwellbeing.Calculations
 import com.example.yourwellbeing.RoomFoodDb.FoodDao
 import com.example.yourwellbeing.RoomFoodDb.FoodDatabase
 
-
+fun resetlist():MutableList<String>
+{
+    var tmplist:MutableList<String> = mutableListOf()
+    if(tmplist.isEmpty())
+    {
+        for(i in 0..14)
+            tmplist.add("Select")
+    }
+    else
+    {
+        for(i in 0..14)
+            tmplist[i]="Select"
+    }
+    return tmplist
+}
 
 
 

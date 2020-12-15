@@ -15,10 +15,9 @@ import androidx.room.Room
 import com.example.yourwellbeing.Calculations.calculate_cal_perfood
 
 import com.example.yourwellbeing.Calculations.calculate_total_cal
+import com.example.yourwellbeing.Calculations.resetlist
+import com.example.yourwellbeing.KEYS.*
 
-import com.example.yourwellbeing.KEYS.EXTRA_AGE
-import com.example.yourwellbeing.KEYS.EXTRA_GENDER
-import com.example.yourwellbeing.KEYS.EXTRA_LIFE
 import com.example.yourwellbeing.Room.Chart
 import com.example.yourwellbeing.Room.Databases
 import com.example.yourwellbeing.RoomFoodDb.FoodDatabase
@@ -39,6 +38,7 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
     var consumed_cal:Int=0
 
     var allfoods:MutableList<String> = mutableListOf()
+    var origallfoods:MutableList<String> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calorie_tracker_activity)
@@ -47,7 +47,8 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
         user_lifestyle= intent.getStringExtra(EXTRA_LIFE).toString()
 
 
-        resetlist()
+        allfoods=resetlist()
+
 
         val fooddb=FoodDatabase.getInstance(application)
         val db = Databases.getInstance(application)
@@ -93,13 +94,25 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
 
         calculatebtn.setOnClickListener {
 
+            origallfoods=resetlist()
             CoroutineScope(IO).launch {
                 val f= allfoods.toList()
                 val cal_perfood_list= calculate_cal_perfood(f,che)
                 consumed_cal= calculate_total_cal(cal_perfood_list,
                     listOf(morningsp1count_txt.text.toString().toInt(),morningsp2count_txt.text.toString().toInt(),morningsp3count_txt.text.toString().toInt(),breakfastsp1count_txt.text.toString().toInt(),breakfastsp2count_txt.text.toString().toInt(),breakfastsp3count_txt.text.toString().toInt(),lunchsp1count_txt.text.toString().toInt(),lunchsp2count_txt.text.toString().toInt(),lunchsp3count_txt.text.toString().toInt(),eveningsp1count_txt.text.toString().toInt(),eveningsp2count_txt.text.toString().toInt(),eveningsp3count_txt.text.toString().toInt(),dinnersp1count_txt.text.toString().toInt(),dinnersp2count_txt.text.toString().toInt(),dinnersp3count_txt.text.toString().toInt()))
                 withContext(Main){
-                    Toast.makeText(this@calorie_tracker_activity,"total: $maxcal consumed: $consumed_cal",Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@calorie_tracker_activity,"total: $maxcal consumed: $consumed_cal",Toast.LENGTH_SHORT).show()
+                    if(!(allfoods.containsAll(origallfoods) && origallfoods.containsAll(allfoods))) {
+                        val intent =
+                            Intent(this@calorie_tracker_activity, Result_Activity::class.java)
+                        intent.putExtra(AVERAGE_CAL, maxcal)
+                        intent.putExtra(CONSUMED_CAL, consumed_cal)
+                        startActivity(intent)
+                    }
+                    else
+                    {
+                        Toast.makeText(this@calorie_tracker_activity,"Please select food",Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
@@ -230,19 +243,7 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
 //        }
 //        return callist.toList()
 //    }
-fun resetlist()
-{
-    if(allfoods.isEmpty())
-    {
-        for(i in 0..14)
-            allfoods.add("Select")
-    }
-    else
-    {
-        for(i in 0..14)
-            allfoods[i]="Select"
-    }
-}
+
 
 
 
