@@ -15,15 +15,19 @@ class Result_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result_)
 
+        supportActionBar?.hide()
+
         calorieconsumed=intent.getIntExtra(CONSUMED_CAL,0)
         averagecalorie=intent.getIntExtra(AVERAGE_CAL,0)
 
-        val resulttext="Average Calorie:${averagecalorie.toString()} Calorie Consumed:${calorieconsumed.toString()}"
+        val resulttext="Average Calorie:${averagecalorie.toString()}Cal"
+        val consumedtext="Calorie Consumed:${calorieconsumed.toString()}Cal"
         if(calorieconsumed<=averagecalorie)
         {
             if(averagecalorie-calorieconsumed>600)
             {
                 resultquoteview.text= "Calorie count is very less from Average"
+                healthstat_image.setImageResource(R.drawable.ic_eatenless)
             }
             else
             {
@@ -35,13 +39,15 @@ class Result_Activity : AppCompatActivity() {
             if(calorieconsumed-averagecalorie>500)
             {
                 resultquoteview.text="You have eaten a lot today"
+                healthstat_image.setImageResource(R.drawable.ic_eatenlot)
             }
             else
             {
                 resultquoteview.text="Going Good !!!"
             }
         }
-        resultvalueview.text=resulttext
+        max_resultview.text=resulttext
+        con_resultview.text=consumedtext
 
 
 

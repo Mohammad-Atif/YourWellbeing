@@ -48,6 +48,7 @@ class calorie_tracker_activity : AppCompatActivity() ,SpinnerActivity.Changeview
 
 
         allfoods=resetlist()
+        supportActionBar?.hide()
 
 
         val fooddb=FoodDatabase.getInstance(application)
