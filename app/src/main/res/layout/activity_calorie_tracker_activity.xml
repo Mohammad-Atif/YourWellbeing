@@ -669,7 +669,7 @@
             <Button
                 android:id="@+id/calculatebtn"
                 android:layout_width="115dp"
-                android:layout_height="40dp"
+                android:layout_height="38dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/rounded_corners"
