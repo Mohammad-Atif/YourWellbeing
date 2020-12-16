@@ -195,21 +195,23 @@
                 app:layout_constraintStart_toEndOf="@+id/morningsp3count_txt"
                 app:layout_constraintTop_toTopOf="@+id/morningsp3count_txt"
                 app:layout_constraintVertical_bias="0.466" />
+
             <EditText
                 android:id="@+id/breakfastsp1count_txt"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:textColor="#AA8282"
                 android:layout_marginTop="12dp"
                 android:autofillHints=""
                 android:ems="10"
-                android:text="@string/_1"
                 android:inputType="number"
+                android:text="@string/_1"
+                android:textColor="#AA8282"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/breakfastsp1"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/breakfastsp1"
                 app:layout_constraintTop_toBottomOf="@+id/breakfastsp1" />
+
             <TextView
                 android:id="@+id/breakfast_intake_view1"
                 android:layout_width="wrap_content"
@@ -409,15 +411,15 @@
                 android:id="@+id/eveningtxtview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="34dp"
+                android:layout_marginTop="36dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/evening_snack"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintHorizontal_bias="0.054"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lunchsp1count_txt"/>
+                app:layout_constraintTop_toBottomOf="@id/lunchsp1count_txt" />
 
             <Spinner
                 android:id="@+id/eveningsp1"
@@ -666,8 +668,8 @@
 
             <Button
                 android:id="@+id/calculatebtn"
-                android:layout_width="111dp"
-                android:layout_height="47dp"
+                android:layout_width="115dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/rounded_corners"
