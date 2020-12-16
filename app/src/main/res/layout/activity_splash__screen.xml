@@ -6,43 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Splash_Screen">
 
-    <TextView
-        android:id="@+id/appname_view"
+    <ImageView
+        android:id="@+id/splashlogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/chicle"
-        android:text="@string/your"
-        android:textColor="#344955"
-        android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204" />
-
-    <TextView
-        android:id="@+id/appname_view2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/chicle"
-        android:text="@string/wellbeing"
-        android:textColor="#344955"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appname_view"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/applogo_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appname_view2"
-        app:srcCompat="@drawable/ic_applogo"
+        app:layout_constraintVertical_bias="0.424"
+        app:srcCompat="@drawable/ic_homescreen"
         android:contentDescription="@string/todo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
