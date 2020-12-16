@@ -2,9 +2,12 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/</item>
+        <item>@font/chicle</item>
+        <item>@font/fredericka_the_great</item>
         <item>@font/playfair_display</item>
         <item>@font/poppins</item>
         <item>@font/poppins_bold</item>
         <item>@font/poppins_medium</item>
+        <item>@font/rochester</item>
     </array>
 </resources>
